@@ -5,6 +5,12 @@ export interface Student {
   password: string;
   gradeLevel: string;
   gender: 'Male' | 'Female' | 'Other';
+  email?: string;
+  phone?: string;
+  guardianName?: string;
+  guardianPhone?: string;
+  dateOfBirth?: string;
+  homeAddress?: string;
   createdAt: any; // Timestamp
 }
 
@@ -37,5 +43,20 @@ export interface Bulletin {
   category: 'Announcement' | 'Event' | 'Academics' | 'Notice' | 'Newsletter';
   author: string;
   imageUrl?: string;
+  createdAt: any; // Timestamp
+}
+
+export interface AdmissionsInquiry {
+  id?: string;
+  studentName: string;
+  gradeLevel: string;
+  gender: string;
+  dob: string;
+  parentName: string;
+  parentPhone: string;
+  parentEmail?: string;
+  previousSchool?: string;
+  status: 'Pending' | 'Approved' | 'Reviewing' | 'Declined';
+  additionalNotes?: string;
   createdAt: any; // Timestamp
 }
