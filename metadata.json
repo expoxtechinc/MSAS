@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Abraham S. Borbor Memorial School of Excellence Portal",
+  "description": "The official web portal and home platform of the Dr. Abraham S. Borbor Memorial School of Excellence, supporting official announcements, customized student portals, grade assessments, and automatic GPA calculations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
