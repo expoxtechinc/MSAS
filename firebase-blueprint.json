@@ -10,6 +10,12 @@
         "password": { "type": "string", "description": "Password used for login." },
         "gradeLevel": { "type": "string", "description": "Grade level / Class (e.g., Grade 9, Grade 12)." },
         "gender": { "type": "string", "description": "Gender of the student." },
+        "email": { "type": "string", "description": "Email address of the student/parent." },
+        "phone": { "type": "string", "description": "Phone number of the student/parent." },
+        "guardianName": { "type": "string", "description": "Sponsor/guardian full name." },
+        "guardianPhone": { "type": "string", "description": "Sponsor/guardian mobile contact." },
+        "dateOfBirth": { "type": "string", "description": "Date of birth in YYYY-MM-DD format." },
+        "homeAddress": { "type": "string", "description": "Physical residential address." },
         "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." }
       },
       "required": ["studentId", "name", "password", "gradeLevel"]
@@ -48,6 +54,42 @@
         "createdAt": { "type": "string", "format": "date-time", "description": "Post timestamp." }
       },
       "required": ["title", "content", "category", "author", "createdAt"]
+    },
+    "inquiries": {
+      "title": "Admissions Inquiry",
+      "description": "Admissions inquiry form submitted by prospective parents.",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string" },
+        "gradeLevel": { "type": "string" },
+        "gender": { "type": "string" },
+        "dob": { "type": "string" },
+        "parentName": { "type": "string" },
+        "parentPhone": { "type": "string" },
+        "parentEmail": { "type": "string" },
+        "previousSchool": { "type": "string" },
+        "additionalNotes": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "generatedStudentId": { "type": "string" },
+        "generatedPassword": { "type": "string" }
+      },
+      "required": ["studentName", "gradeLevel", "parentName", "parentPhone", "status", "createdAt"]
+    },
+    "emails": {
+      "title": "Email Deliveries",
+      "description": "System-generated transactional email records and delivery logs.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "recipient": { "type": "string" },
+        "subject": { "type": "string" },
+        "body": { "type": "string" },
+        "status": { "type": "string" },
+        "sentAt": { "type": "string", "format": "date-time" },
+        "logs": { "type": "array" }
+      },
+      "required": ["recipient", "subject", "body", "status", "sentAt"]
     }
   },
   "firestore": {
@@ -62,6 +104,14 @@
     "/bulletins/{bulletinId}": {
       "schema": "bulletins",
       "description": "Official announcements visible on the homepage."
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "inquiries",
+      "description": "Parent-submitted admissions inquiries."
+    },
+    "/emails/{emailId}": {
+      "schema": "emails",
+      "description": "Transactional SMTP communication and simulated delivery logs."
     }
   }
 }

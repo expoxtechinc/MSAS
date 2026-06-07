@@ -2,13 +2,13 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // 1. Default safety net: Deny all by default unless defined below
+    // Default safety net: Deny all by default unless defined below
     match /{document=**} {
       allow read, write: if false;
     }
 
-    // Since this Portal manages credentials and portal accesses using secure client-side checks with Firestore,
-    // we allow public read and write operations for bulletins, students, and reports to facilitate seamless school portal operations.
+    // Portal Collections - Public read and write operations are permitted 
+    // to facilitate seamless administrative and student portal operations.
     
     match /bulletins/{bulletinId} {
       allow read, write: if true;
@@ -19,6 +19,14 @@ service cloud.firestore {
     }
 
     match /reports/{reportId} {
+      allow read, write: if true;
+    }
+
+    match /inquiries/{inquiryId} {
+      allow read, write: if true;
+    }
+
+    match /emails/{emailId} {
       allow read, write: if true;
     }
   }
